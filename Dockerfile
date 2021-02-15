@@ -5,5 +5,6 @@ RUN npm install
 COPY . .
 RUN npm run build
  
-FROM httpd:2.4
-COPY --from=0 /app/build /usr/local/apache2/htdocs/
+FROM nginx
+EXPOSE 80
+COPY --from=0 /app/build /usr/share/nginx/html
